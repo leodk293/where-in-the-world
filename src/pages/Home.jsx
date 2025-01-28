@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { Search, MoveUp } from "lucide-react";
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import { Link } from "react-router-dom";
@@ -149,41 +149,50 @@ export default function Home() {
       ) : countries.loading === true ? (
         <Loading />
       ) : (
-        <div className=" mt-10 flex flex-wrap justify-center gap-10">
-          {countries.data &&
-            countries.data.map((country) => (
-              <Link
-                className=" hover:translate-y-[-10px] duration-300"
-                key={nanoid(10)}
-                to={`/country/${country.name.common}`}
-              >
-                <div className="flex flex-col">
-                  <img
-                    className="w-[15rem] h-[10rem] border border-gray-200 border-b-transparent rounded-tl-[5px] rounded-tr-[5px] object-cover dark:border-gray-800"
-                    src={country.flags.png}
-                    alt={`${country.name.common} flag`}
-                  />
-                  <div className="shadow bg-white flex flex-col gap-1 p-5 dark:bg-[#2b3743]">
-                    <h1 className="font-bold w-[150px]">
-                      {country.name.common}
-                    </h1>
-                    <p className="pt-5">
-                      <span className=" font-semibold">Population</span>:{" "}
-                      {country.population.toLocaleString()}
-                    </p>
-                    <p>
-                      <span className=" font-semibold">Region</span>:{" "}
-                      {country.region}
-                    </p>
-                    <p className=" w-[10rem]">
-                      <span className=" font-semibold">Capital</span>:{" "}
-                      {country.capital}
-                    </p>
+        <section className=" mt-10">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="fixed bottom-5 right-5 border border-transparent p-2 bg-black rounded-[50%] shadow-md"
+          >
+            <MoveUp size={30} color="#ffffff" />
+          </button>
+
+          <div className=" flex flex-wrap justify-center gap-10">
+            {countries.data &&
+              countries.data.map((country) => (
+                <Link
+                  className=" hover:translate-y-[-10px] duration-300"
+                  key={nanoid(10)}
+                  to={`/country/${country.name.common}`}
+                >
+                  <div className="flex flex-col">
+                    <img
+                      className="w-[15rem] h-[10rem] border border-gray-200 border-b-transparent rounded-tl-[5px] rounded-tr-[5px] object-cover dark:border-gray-800"
+                      src={country.flags.png}
+                      alt={`${country.name.common} flag`}
+                    />
+                    <div className="shadow bg-white flex flex-col gap-1 p-5 dark:bg-[#2b3743]">
+                      <h1 className="font-bold w-[150px]">
+                        {country.name.common}
+                      </h1>
+                      <p className="pt-5">
+                        <span className=" font-semibold">Population</span>:{" "}
+                        {country.population.toLocaleString()}
+                      </p>
+                      <p>
+                        <span className=" font-semibold">Region</span>:{" "}
+                        {country.region}
+                      </p>
+                      <p className=" w-[10rem]">
+                        <span className=" font-semibold">Capital</span>:{" "}
+                        {country.capital}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
-        </div>
+                </Link>
+              ))}
+          </div>
+        </section>
       )}
     </main>
   );

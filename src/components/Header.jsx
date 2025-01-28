@@ -43,7 +43,7 @@ export default function Header() {
     <header
       className={` ${
         isScrolled ? "bg-slate-50" : "bg-white"
-      } flex flex-wrap justify-center fixed w-full gap-5 border border-transparent shadow py-5 px-[10%] md:justify-between md:gap-0 dark:bg-[#2b3743] dark:text-white`}
+      } flex flex-wrap justify-center fixed w-full gap-5 border border-transparent shadow py-5 px-[10%] z-30 md:justify-between md:gap-0 dark:bg-[#2b3743] dark:text-white`}
     >
       <h1 className=" self-center text-2xl font-bold">Where in the world ? 🌍</h1>
 
